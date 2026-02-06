@@ -1,0 +1,257 @@
+// ==========================================
+// HERO SECTION
+// ==========================================
+.hero-section {
+  height: 100dvh;
+  width: 100%;
+  padding-top: 100px;
+  padding-inline: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+
+  background: url(./../public/images/Hero_Section.jpg) no-repeat center / cover;
+
+  color: var(--white);
+  text-align: center;
+
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(#5383A9, #5382a981, #5c8ab00b);
+    height: 412px;
+  }
+
+  &::after {
+    bottom: -1px;
+    background: linear-gradient(#ffffff00, #ffffff2f, #ffffffaf, #ffffffe3, #fff);
+    height: 240px;
+  }
+
+  &__title {
+    font-size: 72px;
+    letter-spacing: -2.5px;
+    margin-bottom: 24px;
+    z-index: 2;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    z-index: 2;
+  }
+
+  @media (max-width: 989px) {
+    &__title {
+      font-size: 55px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 86px;
+
+    &::before {
+      height: 230px;
+    }
+
+    &::after {
+      height: 177px;
+    }
+
+    &__title {
+      font-size: 44px;
+      margin-bottom: 14px;
+    }
+
+    &__subtitle {
+      width: 90%;
+    }
+  }
+}
+
+// ==========================================
+// CONTENT
+// ==========================================
+
+.stats {
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__block {
+    width: 33%;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    font-size: 18px;
+    color: var(--neutral-600);
+  }
+
+  @media (max-width: 768px) {
+    &__title {
+      font-size: 24px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+}
+
+
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0;
+  cursor: pointer;
+
+  padding-left: 80px;
+
+  &.active {
+    cursor: grab;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 16px;
+  }
+}
+
+.slide {
+  display: inline-block;
+  user-select: none;
+  margin-right: 40px;
+
+  &:last-child {
+    margin-right: 80px;
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 24px;
+
+    &:last-child {
+      margin-right: 16px;
+    }
+  }
+}
+
+.plusminus {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &.active {
+    &:before {
+      transform: translatey(-50%) rotate(-90deg);
+      opacity: 0;
+    }
+
+    &:after {
+      transform: translatey(-50%) rotate(0);
+    }
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    background-color: #333;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: .35s;
+    width: 100%;
+    height: 1.5px;
+  }
+
+  &:before {
+    transform: translatey(-50%);
+  }
+
+  &:after {
+    transform: translatey(-50%) rotate(90deg);
+  }
+
+}
+
+// ==========================================
+// ACCORDION
+// ==========================================
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__elem {
+    border-radius: 8px;
+    border: 1px solid var(--neutral-100);
+    padding: 20px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__text {
+    color: var(--neutral-600);
+    font-size: 16px;
+
+    /* 🔽 Animation */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+
+    transition:
+      max-height 0.45s ease,
+      opacity 0.35s ease,
+      padding 0.35s ease,
+      transform 0.45s ease;
+
+    &.active {
+      max-height: 700px;
+      opacity: 1;
+      transform: translateY(0);
+      padding-top: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__elem {
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+  }
+}

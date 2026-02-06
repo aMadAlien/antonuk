@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #12161d;
+
+  --white: #ffffff;
+  --neutral-25: #FAFAFB;
+  --neutral-100: #E5E5E6;
+  --neutral-600: #61656E;
+  --black: #12161d;
+
+  // --smaller-col: 42.97%; // 550px
+  // --larger-col: 53.13%; // 680px
+  --smaller-col: 36.111vw; // 550px
+  --larger-col: 47.222vw; // 680px
+}
+
+// tailwind
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #12161d;
+
+  --color-white: #ffffff;
+  --color-neutral-25: #FAFAFB;
+  --color-neutral-100: #E5E5E6;
+  --color-neutral-600: #61656E;
+  --color-black: #12161d;
+
+  --smaller-col: 42.97%; // 550px
+  --larger-col: 53.13%; // 680px
+  // --smaller-col: 36.111vw; // 550px
+  // --larger-col: 47.222vw; // 680px
+}
+
+
+
+* {
+  line-height: 145%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", Helvetica, sans-serif;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.px-container {
+  padding-inline: 80px;
+
+  @media (max-width: 978px) {
+    padding-inline: 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 20px;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container__col {
+  &--smaller {
+    flex: var(--smaller-col);
+  }
+
+  &--larger {
+    flex: var(--larger-col);
+  }
+}
+
+.h2 {
+  color: var(--black);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  @media (max-width: 1000px) {
+    font-size: 36px;
+  }
+}
+
+.h3 {
+  color: var(--black);
+  font-size: 24px;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.text-p {
+  color: var(--neutral-600);
+  font-size: 18px;
+
+  @media (max-width: 768px) {
+    // font-size: 16px;
+  }
+}
