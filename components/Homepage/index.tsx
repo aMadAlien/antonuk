@@ -104,7 +104,7 @@ export default function Homepage() {
                   width={420}
                   height={420}
                   alt={item.title}
-                  className="aspect-square object-cover rounded-[8px] brightness-75 hover:brightness-100 transition-all duration-500"
+                  className="aspect-square object-cover rounded-[8px] md:brightness-75 hover:brightness-100 transition-all duration-500"
                 />
                 <span>{item.title}</span>
               </Link>
@@ -152,7 +152,7 @@ export default function Homepage() {
         <div className="container flex gap-8 md:justify-between max-md:flex-col">
           <div className="container__col--smaller">
             <h2 className="h2 mb-8 md:mb-6">Часто задавані питання</h2>
-            <p className="text-p">Тут ви знайдете відповіді на найбільш поширені питання щодо монтажу бруківки та наших послуг. Якщо у вас є інші запитання, не соромтеся звертатися до нас!</p>
+            <p className="text-p">Тут ви знайдете відповіді на найбільш поширені питання щодо наших послуг. Якщо у вас є інші запитання, не соромтеся звертатися до нас!</p>
           </div>
 
           <div className="container__col--larger">

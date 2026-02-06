@@ -11,7 +11,7 @@ export default function Header() {
       <nav className="ml-auto">
         <ul className="nav__items">
           <li className="nav__item">
-            <Link href='tel:+380989797551'>+38 (098) 979 - 75 - 51</Link>
+            <Link href='tel:+380989797551'>+38 (098) 97 - 97 - 551</Link>
           </li>
         </ul>
       </nav>
