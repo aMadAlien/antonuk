@@ -9,9 +9,11 @@ export default function Footer() {
         <div>
           <LogoIcon color="#12161D" />
           <p className="mt-6 text-lg">
-            More Comfortable.
+            Якісно
             <br />
-            More Classy.
+            Вчасно
+            <br />
+            Під ключ
           </p>
         </div>
         <nav className="footer__nav">
@@ -34,14 +36,14 @@ export default function Footer() {
       </div>
 
       <div className="footer__rights">
-        <div>© 2026 Perumnas. All rights reserved</div>
+        <div>© 2024 Antonuk</div>
 
-        <ul className="footer__rights-list">
+        {/* <ul className="footer__rights-list">
           <li><Link href=''>Terms of Service</Link></li>
           <li><Link href=''>Policy service</Link></li>
           <li><Link href=''>Cookie Policy</Link></li>
           <li><Link href=''>Partners</Link></li>
-        </ul>
+        </ul> */}
       </div>
     </footer>
   )

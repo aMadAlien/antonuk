@@ -5,8 +5,8 @@ export default function Header() {
   return (
     <header className="header">
       <Link href='/'
-      className="absolute left-[32px] top-[32px] -translate-y-1/2"
-      ><LogoIcon /></Link>
+        className="absolute left-[32px] top-[32px] -translate-y-1/2"
+      ><LogoIcon className="w-[70px] h-auto" /></Link>
 
       <nav className="ml-auto">
         <ul className="nav__items">
