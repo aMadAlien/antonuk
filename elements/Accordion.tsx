@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from "react"
+import { FAQ } from "@/types/common";
 
 
-export default function Accordion({ data }: { data: { title: string, text: string }[] }) {
+export default function Accordion({ data }: { data: FAQ[] }) {
   const [active, setActive] = useState<number | null>(0);
 
   if (!data || !data.length) return null;

@@ -5,3 +5,9 @@ export interface FooterNavigationProp {
     href: string
   }[]
 }
+
+export interface FAQ {
+  title: string
+  text: string
+}
+}
