@@ -49,6 +49,7 @@ const sourcesList = [
     title: 'Послуги різноробочих'
   },
 ];
+import Form from "./Form";
 
 
 export default function Homepage() {
@@ -160,6 +161,8 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+
+      <Form />
     </main>
   )
 }
