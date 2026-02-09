@@ -40,10 +40,7 @@ export default async function Page({ params }: { params: Promise<{ posluha: stri
         <p className="hero-section__subtitle">Якісно. Вчасно. Під ключ.</p>
       </div>
 
-      <ServicePage
-        mainTitle={data.mainTitle}
-        mainDescription={data.mainDescription}
-      />
+      <ServicePage data={data} />
 
       <Footer />
     </div>
