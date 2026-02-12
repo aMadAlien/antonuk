@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Input from "@/elements/Input";
+import useTelegram from "@/hooks/useTelegram";
 
 
 interface FormData { name: string, message: string, phone: string };
@@ -30,8 +31,9 @@ export default function Form() {
   const [phone, setPhone] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [errors, setErrors] = useState<null | { [key: string]: string }>(null);
+  const { send, status } = useTelegram();
 
-  function submit(data: FormData) {
+  async function submit(data: FormData) {
     const errors = validateData(data);
 
     if (Object.keys(errors).length > 0) {
@@ -40,16 +42,17 @@ export default function Form() {
     }
     setErrors(null);
 
-    const preparedData = {
+    const success = await send({
       name: data.name.trim(),
-      message: data.message.trim(),
       phone: data.phone.trim(),
-    };
+      message: data.message.trim(),
+    });
 
-    return {
-      success: true,
-      data: preparedData,
-    };
+    if (success) {
+      setName('');
+      setPhone('');
+      setMessage('');
+    }
   }
 
 
@@ -103,10 +106,11 @@ export default function Form() {
 
           <button
             type="button"
-            className="h-[50px] bg-black rounded-[15px] text-white text-base !text-center leading-[50px] hover:bg-gray-500 transition-colors duration-300"
+            disabled={status === 'loading'}
+            className="h-[50px] bg-black rounded-[15px] text-white text-base !text-center leading-[50px] hover:bg-gray-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => submit({ name, phone, message })}
           >
-            Надіслати
+            {status === 'loading' ? 'Надсилання...' : status === 'success' ? 'Надіслано!' : 'Надіслати'}
           </button>
         </div>
       </div>
