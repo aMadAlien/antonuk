@@ -37,6 +37,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
+          NEXT_PUBLIC_GOOGLE_SCRIPT_URL: ${{ vars.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3

@@ -31,7 +31,9 @@ export default function Form() {
   const [phone, setPhone] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [errors, setErrors] = useState<null | { [key: string]: string }>(null);
-  const { send, status } = useTelegram();
+  const { send, status, reset } = useTelegram();
+
+  const isSuccess = status === 'success';
 
   async function submit(data: FormData) {
     const errors = validateData(data);
@@ -57,61 +59,107 @@ export default function Form() {
 
 
   return (
-    <div className="container px-5 md:px-15 !mb-[70px] !md:mb-[106px]">
-      <h2 className="h2 mb-6">Для співпраці</h2>
+    <div className="container px-5 md:px-15 !mb-[70px] !md:mb-[106px] relative overflow-hidden">
+      {/* Success */}
+      <div
+        className={`transition-all duration-700 ease-in-out ${
+          isSuccess
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-4 pointer-events-none absolute inset-0'
+        }`}
+      >
+        <h2 className="h2 mb-6">Дякуємо за звернення!</h2>
 
-      <div className="flex max-md:flex-col justify-between gap-14">
-        <div className="w-full max-w-[526px]">
-          <p className="text-p">Якщо у вас виникли питання або ви бажаєте отримати консультацію чи обговорити можливість співпраці, залиште свої контактні дані, і ми обов'язково зв'яжемося з вами.</p>
+        <div className="flex max-md:flex-col justify-between gap-14">
+          <div className="w-full max-w-[526px]">
+            <p className="text-p">Ми отримали вашу заявку і зв'яжемося з вами найближчим часом.</p>
+          </div>
+
+          <div className="w-full max-w-[506px] max-md:mx-auto">
+            <button
+              type="button"
+              className="h-[50px] bg-black rounded-[15px] text-white text-base !text-center leading-[50px] hover:bg-gray-500 transition-colors duration-300 w-full"
+              onClick={() => {
+                setName('');
+                setPhone('');
+                setMessage('');
+                setErrors(null);
+                reset();
+              }}
+            >
+              Надіслати ще одну заявку
+            </button>
+          </div>
         </div>
+      </div>
 
-        <div className="flex flex-col gap-4 md:gap-7 w-full max-w-[506px] max-md:mx-auto">
-          <div className="w-full">
-            <Input
-              value={name}
-              onChange={setName}
-              placeholder="Імʼя"
-              errored={!!errors?.name}
-            />
-            {
-              !errors?.name ? null :
-                <span className='error-message'>{errors.name}</span>
-            }
-          </div>
-          <div className="w-full">
-            <Input
-              value={phone}
-              onChange={setPhone}
-              placeholder="Номер Телефону"
-              errored={!!errors?.phone}
-            />
-            {
-              !errors?.phone ? null :
-                <span className='error-message'>{errors.phone}</span>
-            }
-          </div>
-          <div className="w-full">
-            <textarea
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-              placeholder="Повідомлення"
-              className={`input ${errors?.message && 'errored'}`}
-              rows={5}
-            />
-            {
-              !errors?.message ? null :
-                <span className='error-message'>{errors.message}</span>
-            }
+      {/* Form */}
+      <div
+        className={`transition-all duration-700 ease-in-out ${
+          isSuccess
+            ? 'opacity-0 translate-y-4 pointer-events-none absolute inset-0'
+            : 'opacity-100 translate-y-0'
+        }`}
+      >
+        <h2 className="h2 mb-6">Для співпраці</h2>
+
+        <div className="flex max-md:flex-col justify-between gap-14">
+          <div className="w-full max-w-[526px]">
+            <p className="text-p">Якщо у вас виникли питання або ви бажаєте отримати консультацію чи обговорити можливість співпраці, залиште свої контактні дані, і ми обов'язково зв'яжемося з вами.</p>
           </div>
 
-          <button
-            type="button"
-            disabled={status === 'loading'}
-            className="h-[50px] bg-black rounded-[15px] text-white text-base !text-center leading-[50px] hover:bg-gray-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            onClick={() => submit({ name, phone, message })}
-          >
-            {status === 'loading' ? 'Надсилання...' : status === 'success' ? 'Надіслано!' : 'Надіслати'}
-          </button>
+          <div className="flex flex-col gap-4 md:gap-7 w-full max-w-[506px] max-md:mx-auto">
+            <div className="w-full">
+              <Input
+                value={name}
+                onChange={setName}
+                placeholder="Імʼя"
+                errored={!!errors?.name}
+              />
+              {
+                !errors?.name ? null :
+                  <span className='error-message'>{errors.name}</span>
+              }
+            </div>
+            <div className="w-full">
+              <Input
+                value={phone}
+                onChange={setPhone}
+                placeholder="Номер Телефону"
+                errored={!!errors?.phone}
+              />
+              {
+                !errors?.phone ? null :
+                  <span className='error-message'>{errors.phone}</span>
+              }
+            </div>
+            <div className="w-full">
+              <textarea
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                placeholder="Повідомлення"
+                className={`input ${errors?.message && 'errored'}`}
+                rows={5}
+              />
+              {
+                !errors?.message ? null :
+                  <span className='error-message'>{errors.message}</span>
+              }
+            </div>
+
+            <button
+              type="button"
+              disabled={status === 'loading'}
+              className="h-[50px] bg-black rounded-[15px] text-white text-base !text-center leading-[50px] hover:bg-gray-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => submit({ name, phone, message })}
+            >
+              {status === 'loading' ? 'Надсилання...' : 'Надіслати'}
+            </button>
+
+            {status === 'error' && (
+              <p className="text-red-500 text-sm text-center">Щось пішло не так. Спробуйте ще раз.</p>
+            )}
+          </div>
         </div>
       </div>
     </div>

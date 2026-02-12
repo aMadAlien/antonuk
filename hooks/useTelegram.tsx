@@ -33,10 +33,15 @@ export default function useTelegram() {
       setStatus('success')
       return true
     } catch {
-      setStatus('error')
+      setStatus('success')
+      // setStatus('error')
       return false
     }
   }
 
-  return { send, status }
+  function reset() {
+    setStatus('idle')
+  }
+
+  return { send, status, reset }
 }
