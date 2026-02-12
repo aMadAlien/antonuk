@@ -8,7 +8,8 @@ import {
     faqPavement,
     faqSewerage
 } from "./faq"
-import Paving from '@/public/images/bg/paving.jpg'
+import Paving from '@/public/images/bg/paving.png'
+import Cleanig from '@/public/images/bg/cleaning.png'
 
 
 export const services: ServiceData = {
@@ -21,7 +22,7 @@ export const services: ServiceData = {
         faq: faqPavement,
     },
     "blagoustriy-teritoriyi": {
-        image: Paving,
+        image: Cleanig,
         heroTitle: "Благоустрій та підготовка території",
         heroSubtitle: "Чиста ділянка — готова до будь-яких робіт",
         mainTitle: "Благоустрій території, або чистка території для подальших робіт",

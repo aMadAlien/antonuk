@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ServicePage from "@/components/ServicePage";
@@ -31,13 +32,15 @@ export default async function Page({ params }: { params: Promise<{ posluha: stri
       </div>
 
       <div className="hero-section">
-        <h1 className="hero-section__title">
-          Комплексні роботи
-          <br />
-          для вашої ділянки
-        </h1>
-
-        <p className="hero-section__subtitle">Якісно. Вчасно. Під ключ.</p>
+        <Image
+          src={data.image}
+          alt={data.mainTitle}
+          fill
+          priority
+          className="object-cover"
+        />
+        <h1 className="hero-section__title">{data.heroTitle}</h1>
+        <p className="hero-section__subtitle">{data.heroSubtitle}</p>
       </div>
 
       <ServicePage data={data} />
