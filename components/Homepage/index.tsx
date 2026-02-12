@@ -16,7 +16,7 @@ export default function Homepage() {
         <div className="container flex max-md:gap-8 md:justify-between max-md:flex-col">
           <h2 className="h2 container__col--smaller">Професійні роботи для вашої ділянки</h2>
           <div className="container__col--larger">
-            <p className="text-p mb-[60px] lg:mb-[80px]">Благоустрій території, укладання бруківки, бетонні роботи, каналізація та паркани — все, що потрібно для функціональної та охайної ділянки. Працюємо швидко, акуратно та з увагою до деталей, щоб результат виглядав професійно і служив довго.</p>
+            <p className="text-p mb-[60px] lg:mb-[80px]">Благоустрій території, укладання бруківки, бетонні роботи, каналізація та паркани - все, що потрібно для функціональної та охайної ділянки. Працюємо швидко, акуратно та з увагою до деталей, щоб результат виглядав професійно і служив довго.</p>
 
             <div className="stats__container">
               <div className="stats__block">
@@ -24,7 +24,7 @@ export default function Homepage() {
                 <div className="stats__text">Успішних проектів</div>
               </div>
               <div className="stats__block">
-                <div className="stats__title">80+</div>
+                <div className="stats__title">120+</div>
                 <div className="stats__text">Задоволених клієнтів</div>
               </div>
               <div className="stats__block">
@@ -72,12 +72,12 @@ export default function Homepage() {
       </section>
 
       <section className="px-container py-[60px] md:pt-[120px] md:pb-[80px]">
-        <h2 className="md:hidden h2 mb-8">Ваша територія <br />— наша робота</h2>
+        <h2 className="md:hidden h2 mb-8">Ваша територія <br />- наша робота</h2>
         <p className="md:hidden text-p mb-[60px]">Беремо на себе всі етапи робіт: від демонтажу та підготовки ділянки до монтажу бруківки, парканів, каналізаційних систем і бетонних конструкцій. Допомагаємо з плануванням, підбором матеріалів та контролем якості, щоб ви отримали результат, який служитиме роками.</p>
 
         <div className="container flex max-md:items-center gap-3 md:gap-[33px] md:justify-between">
           <div className="container__col--smaller">
-            <h2 className="max-md:hidden h2 mb-6">Ваша територія <br />— наша робота</h2>
+            <h2 className="max-md:hidden h2 mb-6">Ваша територія <br />- наша робота</h2>
             <p className="max-md:hidden text-p mb-[66px]">Беремо на себе всі етапи робіт: від демонтажу та підготовки ділянки до монтажу бруківки, парканів, каналізаційних систем і бетонних конструкцій. Допомагаємо з плануванням, підбором матеріалів та контролем якості, щоб ви отримали результат, який служитиме роками.</p>
             <Image
               src={DreamImg3}
