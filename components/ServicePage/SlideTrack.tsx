@@ -40,7 +40,6 @@ const SlideTrack = ({ media, activeMedia, onSelect }: SlideTrackProps) => {
               width={560}
               height={100}
               alt="photo"
-              // className="lg:h-[65vh] md:w-[90%] ml-auto object-cover rounded-[8px] hover:brightness-80 transition-all duration-500"
             />
           ) : (
             <VideoSlide src={item.mediaUrl as string} />

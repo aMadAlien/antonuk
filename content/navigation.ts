@@ -47,46 +47,8 @@ export const sourcesList = [
 ];
 
 export const footerNavigation: FooterNavigationProp[] = [
-  // {
-  //   title: "Product",
-  //   list: [
-  //     {
-  //       title: 'Features',
-  //       href: '/'
-  //     },
-  //     {
-  //       title: 'Integrations',
-  //       href: '/'
-  //     },
-  //     {
-  //       title: 'Pricing',
-  //       href: '/'
-  //     },
-  //   ]
-  // },
   {
     title: "Послуги",
     list: sourcesList
   },
-  // {
-  //   title: "Resources",
-  //   list: [
-  //     {
-  //       title: 'Community',
-  //       href: '/'
-  //     },
-  //     {
-  //       title: 'Contact',
-  //       href: '/'
-  //     },
-  //     {
-  //       title: 'DPA',
-  //       href: '/'
-  //     },
-  //     {
-  //       title: 'Terms of service',
-  //       href: '/'
-  //     },
-  //   ]
-  // }
 ]

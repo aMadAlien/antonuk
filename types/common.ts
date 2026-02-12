@@ -24,6 +24,9 @@ export type Service =
 
 export type ServiceData = {
   [key in Service]: {
+    image: StaticImageData
+    heroTitle: string
+    heroSubtitle: string
     mainTitle: string
     mainDescription: string
     faq: FAQ[]

@@ -45,6 +45,8 @@
     letter-spacing: -2.5px;
     margin-bottom: 24px;
     z-index: 2;
+
+    max-width: 60%;
   }
 
   &__subtitle {
@@ -55,6 +57,7 @@
   @media (max-width: 989px) {
     &__title {
       font-size: 35px;
+      max-width: none;
     }
   }
 
