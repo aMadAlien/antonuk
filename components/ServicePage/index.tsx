@@ -1,5 +1,7 @@
 import { FAQ } from '@/types/common'
 import FaqBlock from '../FaqBlock'
+import Gallery from './Gallery'
+import DreamImg3 from '@/public/images/paving-1.jpg'
 
 interface ServicePage {
   mainTitle: string
@@ -19,6 +21,9 @@ export default function ServicePage({ data: { mainTitle, mainDescription, faq } 
         </div>
       </section>
 
+      <Gallery images={[
+        DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3,DreamImg3, DreamImg3, DreamImg3
+      ]} />
 
       <FaqBlock faq={faq} />
 

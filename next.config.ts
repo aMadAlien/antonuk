@@ -4,6 +4,7 @@ const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
 
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   output: "export",
   basePath: repo ? `/${repo}` : '',
   assetPrefix: repo ? `/${repo}/` : '',
