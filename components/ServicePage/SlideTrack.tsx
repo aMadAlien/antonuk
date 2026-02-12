@@ -34,7 +34,7 @@ const SlideTrack = ({ media, activeMedia, onSelect }: SlideTrackProps) => {
             ${index !== activeMedia ? 'zoomed-gallery__slide--unselected' : ''}`}
           onClick={() => onSelect(index)}
         >
-          {(item.mediaType === 'photo' || item.mediaType === 'picture') ? (
+          {(item.mediaType === 'photo') ? (
             <Image
               src={item.mediaUrl}
               width={560}
@@ -43,7 +43,7 @@ const SlideTrack = ({ media, activeMedia, onSelect }: SlideTrackProps) => {
               // className="lg:h-[65vh] md:w-[90%] ml-auto object-cover rounded-[8px] hover:brightness-80 transition-all duration-500"
             />
           ) : (
-            <VideoSlide src={item.mediaUrl} />
+            <VideoSlide src={item.mediaUrl as string} />
           )}
         </div>
       ))}

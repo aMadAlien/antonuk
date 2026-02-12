@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image';
 import SlideTrack from './SlideTrack';
 import { VideoSlide } from '@/elements/VideoSlide';
@@ -21,6 +22,7 @@ const ZoomedGallery = (
     }
 ) => {
   const [activeMedia, setActiveMedia] = useState<number>(0);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const isMobile = useIsMobile();
 
   const goLeft = useCallback(() => {
@@ -33,11 +35,17 @@ const ZoomedGallery = (
 
   useArrowNavigation(goLeft, goRight);
 
+  useEffect(() => {
+    setPortalTarget(document.getElementById('gallery-portal'));
+  }, []);
 
   useEffect(() => {
+    const pageContent = document.getElementById('page-content');
     document.body.style.overflow = 'hidden';
+    if (pageContent) pageContent.style.filter = 'blur(4px)';
     return () => {
       document.body.style.overflow = '';
+      if (pageContent) pageContent.style.filter = '';
     };
   }, []);
 
@@ -60,9 +68,8 @@ const ZoomedGallery = (
     };
   }, []);
 
-  console.log('run', isMobile)
-  return (
-    <div className='fixed w-screen h-[100dvh] bg-[#12161dbf] z-[100] top-0 left-0 flex flex-col md:pt-[84px] pb-6 md:pb-2'>
+  const content = (
+    <div className='fixed w-screen h-[100dvh] bg-[#12161dd6] z-[100] top-0 left-0 flex flex-col md:pt-[84px] pb-6 md:pb-2'>
       <button
         onClick={onClose}
         title="close button"
@@ -123,15 +130,16 @@ const ZoomedGallery = (
         {activeMedia + 1}/{media.length}
       </div>
 
-      {/* <div className='max-md:hidden'> */}
       <SlideTrack
         media={media}
         activeMedia={activeMedia}
         onSelect={setActiveMedia}
       />
-      {/* </div> */}
     </div>
   )
+
+  if (!portalTarget) return null;
+  return createPortal(content, portalTarget);
 }
 
 export default ZoomedGallery

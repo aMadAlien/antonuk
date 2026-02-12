@@ -24,7 +24,8 @@ export default function RootLayout({
       <body
         className={`${interSans.variable}`}
       >
-        {children}
+        <div id="page-content">{children}</div>
+        <div id="gallery-portal"></div>
       </body>
     </html>
   );

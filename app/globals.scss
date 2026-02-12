@@ -33,6 +33,10 @@
   // --larger-col: 47.222vw; // 680px
 }
 
+/* hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
 
 
 * {
