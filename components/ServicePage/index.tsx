@@ -21,9 +21,61 @@ export default function ServicePage({ data: { mainTitle, mainDescription, faq } 
         </div>
       </section>
 
-      <Gallery images={[
-        DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3, DreamImg3,DreamImg3, DreamImg3, DreamImg3
-      ]} />
+      <Gallery media={[
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+        {
+          mediaType: "photo",
+          mediaUrl: DreamImg3
+        },
+      ]}
+      />
 
       <FaqBlock faq={faq} />
 

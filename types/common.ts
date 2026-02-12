@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image"
+
 export interface FooterNavigationProp {
   title: string
   list: {
@@ -26,4 +28,16 @@ export type ServiceData = {
     mainDescription: string
     faq: FAQ[]
   }
+}
+
+
+export interface Media {
+  mediaType: "photo" | "video"
+  mediaUrl: StaticImageData | string
+}
+
+export interface SlideTrackProps {
+  media: Media[]
+  activeMedia: number
+  onSelect: (arg: number) => void
 }

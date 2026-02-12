@@ -1,15 +1,19 @@
 'use client'
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import ZoomedGallery from "./ZoomedGallery";
+import { Media } from "@/types/common";
+import { VideoSlide } from "@/elements/VideoSlide";
 
-export default function Gallery({ images }: { images: StaticImageData[] }) {
-  const [expanded, setExpanded] = useState(false);
+export default function Gallery({ media }: { media: Media[] }) {
+  const [expanded, setExpanded] = useState<boolean>(false);
+  const [openLightbox, setOpenLightbox] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined);
 
   const cellsNumber = 12;
-  const hasMore = images.length > cellsNumber;
+  const hasMore = media?.length > cellsNumber;
 
   const measure = useCallback(() => {
     const grid = gridRef.current;
@@ -36,6 +40,7 @@ export default function Gallery({ images }: { images: StaticImageData[] }) {
     return () => window.removeEventListener('resize', measure);
   }, [measure]);
 
+  if (!media || !media.length) return null
   return (
     <div className="px-container">
       <div
@@ -43,16 +48,23 @@ export default function Gallery({ images }: { images: StaticImageData[] }) {
         className="grid grid-cols-4 gap-2 overflow-hidden transition-[max-height] duration-700 ease-in-out"
         style={maxHeight !== undefined ? { maxHeight: `${maxHeight}px` } : undefined}
       >
-        {images.map((item, index) => (
-          <Image
+        {media.map((item, index) =>
+          <div
             key={index}
-            src={item}
-            width={400}
-            height={400}
-            alt="photo"
-            className="aspect-square w-full ml-auto object-cover rounded-[4px] hover:brightness-80 transition-all duration-500"
-          />
-        ))}
+            onClick={() => setOpenLightbox(index)}
+            className="aspect-square w-full ml-auto rounded-[4px] hover:brightness-80 transition-all duration-500"
+          >
+            {
+              item.mediaType === 'photo' ?
+                <Image
+                  src={item.mediaUrl}
+                  alt="Slide"
+                  loading="lazy"
+                  className="object-cover" />
+                : <VideoSlide src={item.mediaUrl as string} />
+            }
+          </div>
+        )}
       </div>
 
       {hasMore && (
@@ -63,6 +75,14 @@ export default function Gallery({ images }: { images: StaticImageData[] }) {
         >
           {expanded ? 'Згорнути' : 'Розгорнути'}
         </button>
+      )}
+
+      {openLightbox !== null && (
+        <ZoomedGallery
+          media={media}
+          currentSlide={openLightbox}
+          onClose={() => setOpenLightbox(null)}
+        />
       )}
     </div>
   )
